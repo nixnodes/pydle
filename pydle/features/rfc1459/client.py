@@ -5,7 +5,7 @@ import itertools
 import copy
 import ipaddress
 
-from pydle.async import Future
+from pydle.asynchronous import Future
 from pydle.client import BasicClient, NotInChannel, AlreadyInChannel
 from . import parsing
 from . import protocol
@@ -210,7 +210,9 @@ class RFC1459Support(BasicClient):
             self.rawmsg('PASS', self.password)
 
         # Then nickname...
-        self.set_nickname(self._attempt_nicknames.pop(0))
+        self.set_nickname(self._attempt_nicknames[0])
+        # Rotate nicknames...
+        self._attempt_nicknames.insert(0, self._attempt_nicknames.pop())
         # And now for the rest of the user information.
         self.rawmsg('USER', self.username, '0', '*', self.realname)
 

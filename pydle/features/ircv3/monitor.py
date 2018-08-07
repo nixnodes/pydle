@@ -79,13 +79,13 @@ class MonitoringSupport(cap.CapabilityNegotiationSupport):
         """ Someone we are monitoring just came online. """
         for nick in message.params[1].split(','):
             self._create_user(nick)
-            self.eventloop.schedule(self.on_user_online, nickname)
+            self.eventloop.schedule(self.on_user_online, nick)
 
     def on_raw_731(self, message):
         """ Someone we are monitoring got offline. """
         for nick in message.params[1].split(','):
             self._destroy_user(nick, monitor_override=True)
-            self.eventloop.schedule(self.on_user_offline, nickname)
+            self.eventloop.schedule(self.on_user_offline, nick)
 
     def on_raw_732(self, message):
         """ List of users we're monitoring. """

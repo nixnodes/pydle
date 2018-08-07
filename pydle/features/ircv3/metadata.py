@@ -1,4 +1,4 @@
-from pydle.async import Future
+from pydle.asynchronous import Future
 from . import cap
 
 VISIBLITY_ALL = '*'

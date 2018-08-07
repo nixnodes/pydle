@@ -5,7 +5,7 @@ import datetime
 import itertools
 import logging
 
-from . import async
+from . import asynchronous
 from . import connection
 from . import protocol
 
@@ -94,7 +94,7 @@ class BasicClient:
         if eventloop:
             self.eventloop = eventloop
         elif not self.eventloop:
-            self.eventloop = async.EventLoop()
+            self.eventloop = asynchronous.EventLoop()
         self.own_eventloop = not eventloop
 
         # Reset attributes and connect.
@@ -435,7 +435,7 @@ class ClientPool:
 
     def __init__(self, clients=None, eventloop=None):
         if not eventloop:
-            self.eventloop = async.EventLoop()
+            self.eventloop = asynchronous.EventLoop()
         else:
             self.eventloop = eventloop
         if not clients:

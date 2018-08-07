@@ -10,7 +10,7 @@ import socket
 import ssl
 import errno
 
-from . import async
+from . import asynchronous
 from . import protocol
 
 __all__ = [ 'BUFFER_SIZE', 'Connection' ]
@@ -54,7 +54,7 @@ class Connection:
 
         self.socket = None
         self.socket_lock = threading.RLock()
-        self.eventloop = eventloop or async.EventLoop()
+        self.eventloop = eventloop or asynchronous.EventLoop()
         self.handlers = { 'read': [], 'write': [], 'error': [] }
 
         self.send_queue = collections.deque()

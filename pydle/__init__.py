@@ -1,6 +1,6 @@
-from . import async, connection, protocol, client, features
+from . import asynchronous, connection, protocol, client, features
 
-from .async import coroutine, Future
+from .asynchronous import coroutine, Future
 from .client import Error, NotInChannel, AlreadyInChannel, BasicClient, ClientPool
 from .features.ircv3.cap import NEGOTIATING as CAPABILITY_NEGOTIATING, FAILED as CAPABILITY_FAILED, NEGOTIATED as CAPABILITY_NEGOTIATED
 
